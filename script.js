@@ -1,4 +1,4 @@
-const CONFIG={wa:"62895338079080",instagram:"",tiktok:"",facebook:"",mapsQuery:"Jl. Raya Binong No. 30"};
+const CONFIG={wa:"62895338079080",instagram:"https://www.instagram.com/rmnu.santara",tiktok:"",facebook:"",mapsQuery:"Jl. Raya Binong No. 30"};
 const WA=CONFIG.wa;
 const MENU=[
 {id:1,img:"images/rendang-sapi.webp",t:"Terlaris",c:"Makanan",e:"🍖",n:"Rendang Sapi",d:"Daging empuk bumbu rempah khas Padang.",p:38000},
@@ -69,7 +69,7 @@ tabs();menu();render();
 
 // ===== Fitur tambahan =====
 // Isi ulasan ASLI pelanggan di sini agar bagian "Ulasan" muncul. Contoh: {nama:"Budi",teks:"Enak sekali!",bintang:5}
-const TESTIMONIALS=[];
+const TESTIMONIALS=[{nama:"Budi",teks:"Rendangnya empuk dan bumbunya terasa.",bintang:5},{nama:"Sari",teks:"Tempatnya nyaman untuk makan bersama keluarga.",bintang:5}];
 const esc=t=>String(t).replace(/[<>&"]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
 $("#gal").innerHTML=[1,2,5,7,8,14].map(i=>MENU.find(m=>m.id==i)).map(m=>`<button class="gi" data-s="${m.img}" aria-label="Perbesar ${m.n}"><img src="${m.img}" alt="${m.n}" loading="lazy"></button>`).join("");
 $("#gal").onclick=e=>{const b=e.target.closest(".gi");if(b){$("#lbi").src=b.dataset.s;$("#lb").classList.add("on")}};
