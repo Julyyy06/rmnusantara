@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" width="900" height="280" role="img" aria-label="Rumah Makan Nusantara">
+<defs>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF6E9"/><stop offset="1" stop-color="#FFDDB5"/></linearGradient>
+<clipPath id="c"><rect x="0" y="150" width="0" height="50"><animate attributeName="width" from="0" to="700" dur="2.8s" begin="0.9s" fill="freeze"/></rect></clipPath>
+</defs>
+<style>
+.t{font:700 48px Georgia,'Times New Roman',serif;fill:#3A2A1E;animation:up 1s ease-out both}
+.s2{font:400 26px Georgia,serif;fill:#C75F10}
+.s3{font:500 16px system-ui,sans-serif;fill:#8A7564;animation:up 1s 3.4s ease-out both}
+.f{animation:fl 4s ease-in-out infinite}
+.st{fill:none;stroke:#E8731A;stroke-width:5;stroke-linecap:round;stroke-dasharray:60;animation:sm 2.6s ease-out infinite}
+.w1{animation:wv 9s linear infinite}.w2{animation:wv 6s linear infinite}
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes sm{0%{stroke-dashoffset:60;opacity:0;transform:translateY(8px)}30%{opacity:.9}100%{stroke-dashoffset:0;opacity:0;transform:translateY(-14px)}}
+@keyframes wv{to{transform:translateX(-900px)}}
+</style>
+<rect width="900" height="280" fill="url(#g)"/>
+<path class="w1" d="M0 240 Q112 214 225 240 T450 240 T675 240 T900 240 T1125 240 T1350 240 T1575 240 T1800 240 V280 H0Z" fill="#E8731A" opacity=".35"/>
+<path class="w2" d="M0 252 Q112 228 225 252 T450 252 T675 252 T900 252 T1125 252 T1350 252 T1575 252 T1800 252 V280 H0Z" fill="#E8731A"/>
+<g class="f">
+<circle cx="770" cy="125" r="64" fill="#FFFBF4" stroke="#E8731A" stroke-width="6"/>
+<circle cx="770" cy="125" r="40" fill="#E8731A" opacity=".2"/>
+<circle cx="770" cy="125" r="14" fill="#E8731A"/>
+<path class="st" d="M748 48 q-9 -12 0 -22" /><path class="st" style="animation-delay:.8s" d="M770 44 q-9 -12 0 -22"/><path class="st" style="animation-delay:1.6s" d="M792 48 q-9 -12 0 -22"/>
+</g>
+<text class="t" x="56" y="120">Rumah Makan Nusantara</text>
+<text class="s2" x="56" y="182" clip-path="url(#c)">Masakan khas dari seluruh Nusantara</text>
+<text class="s3" x="56" y="222">Jl. Raya Binong No. 30  ·  Pesan &amp; reservasi via WhatsApp</text>
+</svg>
