@@ -1,20 +1,20 @@
 const CONFIG={wa:"62895338079080",instagram:"https://www.instagram.com/rmnu.santara",tiktok:"",facebook:"",mapsQuery:"Jl. Raya Binong No. 30"};
 const WA=CONFIG.wa;
 const MENU=[
-{id:1,img:"images/rendang-sapi.webp",t:"Terlaris",c:"Makanan",e:"🍖",n:"Rendang Sapi",d:"Daging empuk bumbu rempah khas Padang.",p:38000},
-{id:2,img:"images/ayam-bakar-taliwang.webp",t:"Pedas",c:"Makanan",e:"🍗",n:"Ayam Bakar Taliwang",d:"Ayam bakar pedas gurih khas Lombok.",p:32000},
-{id:3,img:"images/gudeg-jogja.webp",c:"Makanan",e:"🍲",n:"Gudeg Jogja",d:"Nangka muda manis dengan telur dan krecek.",p:28000},
-{id:4,img:"images/soto-betawi.webp",c:"Makanan",e:"🥣",n:"Soto Betawi",d:"Kuah santan gurih dengan daging sapi.",p:30000},
-{id:5,img:"images/nasi-goreng-kampung.webp",c:"Makanan",e:"🍳",n:"Nasi Goreng Kampung",d:"Nasi goreng ikan asin, telur mata sapi.",p:25000},
-{id:6,img:"images/sate-ayam-madura.webp",t:"Terlaris",c:"Makanan",e:"🍢",n:"Sate Ayam Madura",d:"10 tusuk dengan bumbu kacang.",p:27000},
-{id:7,img:"images/gado-gado.webp",c:"Makanan",e:"🥗",n:"Gado-Gado",d:"Sayur segar, tahu, tempe, saus kacang.",p:22000},
-{id:8,img:"images/ikan-bakar-jimbaran.webp",t:"Baru",c:"Makanan",e:"🐟",n:"Ikan Bakar Jimbaran",d:"Ikan segar bakar sambal matah.",p:45000},
-{id:9,img:"images/es-teh-manis.webp",c:"Minuman",e:"🧊",n:"Es Teh Manis",d:"Teh segar dingin.",p:6000},
-{id:10,img:"images/es-jeruk.webp",c:"Minuman",e:"🍊",n:"Es Jeruk",d:"Jeruk peras asli.",p:10000},
-{id:11,img:"images/wedang-jahe.webp",c:"Minuman",e:"🫚",n:"Wedang Jahe",d:"Jahe hangat dengan gula aren.",p:10000},
-{id:12,img:"images/es-cendol.webp",c:"Minuman",e:"🥥",n:"Es Cendol",d:"Cendol, santan, dan gula merah.",p:14000},
-{id:13,img:"images/pisang-goreng.webp",c:"Camilan",e:"🍌",n:"Pisang Goreng",d:"Renyah dengan taburan keju.",p:15000},
-{id:14,img:"images/klepon.webp",c:"Camilan",e:"🟢",n:"Klepon",d:"Isi gula merah, balut kelapa parut.",p:12000}];
+{id:1,img:"images/rendang-sapi.webp",t:["Terlaris", "Berempah"],c:"Makanan",e:"🍖",n:"Rendang Sapi",d:"Daging empuk bumbu rempah khas Padang.",p:38000},
+{id:2,img:"images/ayam-bakar-taliwang.webp",t:["Pedas"],c:"Makanan",e:"🍗",n:"Ayam Bakar Taliwang",d:"Ayam bakar pedas gurih khas Lombok.",p:32000},
+{id:3,img:"images/gudeg-jogja.webp",t:["Manis"],c:"Makanan",e:"🍲",n:"Gudeg Jogja",d:"Nangka muda manis dengan telur dan krecek.",p:28000},
+{id:4,img:"images/soto-betawi.webp",t:["Berkuah"],c:"Makanan",e:"🥣",n:"Soto Betawi",d:"Kuah santan gurih dengan daging sapi.",p:30000},
+{id:5,img:"images/nasi-goreng-kampung.webp",t:["Gurih"],c:"Makanan",e:"🍳",n:"Nasi Goreng Kampung",d:"Nasi goreng ikan asin, telur mata sapi.",p:25000},
+{id:6,img:"images/sate-ayam-madura.webp",t:["Terlaris"],c:"Makanan",e:"🍢",n:"Sate Ayam Madura",d:"10 tusuk dengan bumbu kacang.",p:27000},
+{id:7,img:"images/gado-gado.webp",t:["Sayuran"],c:"Makanan",e:"🥗",n:"Gado-Gado",d:"Sayur segar, tahu, tempe, saus kacang.",p:22000},
+{id:8,img:"images/ikan-bakar-jimbaran.webp",t:["Baru"],c:"Makanan",e:"🐟",n:"Ikan Bakar Jimbaran",d:"Ikan segar bakar sambal matah.",p:45000},
+{id:9,img:"images/es-teh-manis.webp",t:["Dingin"],c:"Minuman",e:"🧊",n:"Es Teh Manis",d:"Teh segar dingin.",p:6000},
+{id:10,img:"images/es-jeruk.webp",t:["Segar"],c:"Minuman",e:"🍊",n:"Es Jeruk",d:"Jeruk peras asli.",p:10000},
+{id:11,img:"images/wedang-jahe.webp",t:["Hangat"],c:"Minuman",e:"🫚",n:"Wedang Jahe",d:"Jahe hangat dengan gula aren.",p:10000},
+{id:12,img:"images/es-cendol.webp",t:["Dingin", "Manis"],c:"Minuman",e:"🥥",n:"Es Cendol",d:"Cendol, santan, dan gula merah.",p:14000},
+{id:13,img:"images/pisang-goreng.webp",t:["Renyah"],c:"Camilan",e:"🍌",n:"Pisang Goreng",d:"Renyah dengan taburan keju.",p:15000},
+{id:14,img:"images/klepon.webp",t:["Manis"],c:"Camilan",e:"🟢",n:"Klepon",d:"Isi gula merah, balut kelapa parut.",p:12000}];
 const $=s=>document.querySelector(s), rp=n=>"Rp"+n.toLocaleString("id-ID");
 let cat="Semua", cart={};
 try{cart=JSON.parse(localStorage.getItem("rmn-cart")||"{}")}catch(e){}
@@ -23,9 +23,10 @@ function toast(t){const el=$("#toast");el.textContent=t;el.classList.add("on");c
 
 function tabs(){const cs=["Semua",...new Set(MENU.map(m=>m.c))];
 $("#tabs").innerHTML=cs.map(c=>`<button class="tab ${c===cat?"on":""}" data-c="${c}">${c}</button>`).join("")}
+const tags=m=>{const l=m.s?["Habis"]:[].concat(m.t||[]);return l.length?`<div class="tags">${l.map(x=>`<span class="tag">${x}</span>`).join("")}</div>`:""};
 function menu(){const q=$("#q").value.trim().toLowerCase();
 const l=MENU.filter(m=>(cat==="Semua"||m.c===cat)&&(m.n+m.d).toLowerCase().includes(q));
-$("#grid").innerHTML=l.length?l.map(m=>`<article class="card${m.s?" out":""}"><div class="emo">${(m.s||m.t)?`<span class="tag">${m.s?"Habis":m.t}</span>`:""}${m.img?`<img src="${m.img}" alt="${m.n}" loading="lazy" width="640" height="480">`:`<span>${m.n}</span>`}</div><h3>${m.n}</h3><p>${m.d}</p><div class="row"><span class="price">${rp(m.p)}</span><button class="add" ${m.s?"disabled":""} data-id="${m.id}" aria-label="Tambah ${m.n}">+</button></div></article>`).join(""):`<div class="empty">Menu tidak ditemukan.</div>`}
+$("#grid").innerHTML=l.length?l.map(m=>`<article class="card${m.s?" out":""}"><div class="emo">${tags(m)}${m.img?`<img src="${m.img}" alt="${m.n}" loading="lazy" width="640" height="480">`:`<span>${m.n}</span>`}</div><h3>${m.n}</h3><p>${m.d}</p><div class="row"><span class="price">${rp(m.p)}</span><button class="add" ${m.s?"disabled":""} data-id="${m.id}" aria-label="Tambah ${m.n}">+</button></div></article>`).join(""):`<div class="empty">Menu tidak ditemukan.</div>`}
 function render(){const ids=Object.keys(cart).filter(i=>cart[i]>0);
 let t=0,n=0;
 $("#items").innerHTML=ids.length?ids.map(i=>{const m=MENU.find(x=>x.id==i);t+=m.p*cart[i];n+=cart[i];
