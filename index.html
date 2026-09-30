@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rumah Makan Nusantara | Masakan Khas Nusantara di Jl. Raya Binong</title>
+<meta name="description" content="Rumah makan masakan Nusantara di Jl. Raya Binong No. 30. Rendang, soto, sate, dan hidangan khas berbagai daerah. Pesan atau reservasi meja lewat WhatsApp.">
+<meta name="theme-color" content="#E8731A">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rumah Makan Nusantara">
+<meta property="og:description" content="Rumah makan masakan Nusantara di Jl. Raya Binong No. 30. Rendang, soto, sate, dan hidangan khas berbagai daerah. Pesan atau reservasi meja lewat WhatsApp.">
+<meta property="og:image" content="images/hero.webp">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Rumah Makan Nusantara","servesCuisine":"Indonesian","telephone":"+62895338079080","image":"images/hero.webp","address":{"@type":"PostalAddress","streetAddress":"Jl. Raya Binong No. 30","addressCountry":"ID"},"openingHours":"Mo-Su 10:00-22:00"}</script>
+</head>
+<body>
+<header><div class="wrap bar">
+<a class="logo" href="#beranda">Rumah Makan <span>Nusantara</span></a>
+<nav id="nav"><a href="#tentang">Tentang</a><a href="#menu">Menu</a><a href="#galeri">Galeri</a><a href="#reservasi">Reservasi</a><a href="#kontak">Kontak</a></nav>
+<div style="display:flex;gap:8px;align-items:center">
+<button class="cart-btn" id="openCart" aria-label="Buka keranjang">🛒<span class="badge" id="count">0</span></button>
+<button class="burger" id="burger" aria-label="Menu">☰</button></div>
+</div></header>
+
+<main>
+<section class="hero" id="beranda"><div class="wrap">
+<div><span class="eyebrow">Cita rasa Indonesia</span>
+<h1>Masakan rumahan dari <em>seluruh Nusantara</em></h1>
+<p>Resep turun-temurun, bumbu segar, disajikan hangat untuk keluarga dan teman Anda.</p>
+<div class="cta"><a class="btn" href="#menu">Lihat Menu</a><a class="btn ghost" href="#reservasi">Reservasi Meja</a></div></div>
+<img class="hero-img" src="images/hero.webp" fetchpriority="high" alt="Suasana Rumah Makan Nusantara"></div></section>
+
+<section id="tentang" style="padding-top:24px"><div class="wrap">
+<span class="eyebrow">Tentang kami</span><h2>Sederhana, hangat, berasa</h2>
+<div class="about">
+<div><b>🌿</b><p>Bahan segar pilihan dari pasar lokal setiap pagi.</p></div>
+<div><b>👩‍🍳</b><p>Dimasak dengan resep tradisional dari berbagai daerah.</p></div>
+<div><b>🏡</b><p>Suasana nyaman, cocok untuk makan bersama keluarga.</p></div>
+</div></div></section>
+
+<section id="menu"><div class="wrap">
+<span class="eyebrow">Menu pilihan</span><h2>Pilih favorit Anda</h2>
+<div class="tools" id="tabs"></div>
+<div class="tools"><input class="search" id="q" type="search" placeholder="Cari menu…" aria-label="Cari menu"></div>
+<div class="grid" id="grid"></div>
+</div></section>
+
+<section id="galeri"><div class="wrap"><span class="eyebrow">Galeri</span><h2>Sekilas hidangan kami</h2><div class="gal" id="gal"></div></div></section>
+<section id="ulasan" hidden><div class="wrap"><span class="eyebrow">Ulasan</span><h2>Kata pelanggan kami</h2><div class="tg" id="tg"></div></div></section>
+<section id="reservasi"><div class="wrap">
+<span class="eyebrow">Reservasi</span><h2>Pesan meja Anda</h2>
+<form id="rsv" novalidate>
+<label>Nama<input id="rn" required placeholder="Nama lengkap"></label>
+<div class="two"><label>No. WhatsApp<input id="rp" type="tel" required placeholder="08xxxxxxxxxx"></label>
+<label>Jumlah tamu<select id="rg"></select></label></div>
+<div class="two"><label>Tanggal<input id="rd" type="date" required></label>
+<label>Jam<select id="rt"></select></label></div>
+<button class="btn" type="submit">Kirim Reservasi</button>
+<div class="ok" id="rok" hidden></div>
+</form></div></section>
+
+<section id="kontak"><div class="wrap">
+<span class="eyebrow">Kontak</span><h2>Kunjungi kami</h2>
+<div class="info">
+<div><h3>📍 Alamat</h3><p>Jl. Raya Binong No. 30</p></div>
+<div><h3>🕘 Jam buka</h3><p>Setiap hari<br>10.00 – 22.00 WIB</p></div>
+<div><h3>📞 Telepon</h3><p><a href="tel:+62895338079080" style="color:var(--accent)">0895-3380-79080</a></p></div>
+</div><iframe class="map" id="map" title="Peta lokasi Rumah Makan Nusantara" loading="lazy"></iframe></div></section>
+</main>
+<footer><div id="soc"></div>© <span id="yr"></span> Rumah Makan Nusantara. Semua hak dilindungi.</footer>
+
+<div class="ov" id="ov"></div>
+<aside class="drawer" id="drawer" aria-label="Keranjang">
+<div class="dh"><h3>Pesanan Anda</h3><button class="x" id="closeCart" aria-label="Tutup">×</button></div>
+<div class="items" id="items"></div>
+<div class="total"><span>Total</span><span id="total">Rp0</span></div>
+<input id="cn" placeholder="Nama pemesan">
+<select id="cm" style="margin-bottom:10px"><option>Makan di tempat</option><option>Bawa pulang</option></select>
+<button class="btn" id="checkout">Pesan via WhatsApp</button>
+</aside>
+<div class="lb" id="lb"><img id="lbi" alt=""></div>
+<a class="wafab" id="wafab" target="_blank" rel="noopener">Chat WhatsApp</a>
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
