@@ -3,7 +3,7 @@ const WA=CONFIG.wa;
 const MENU=[
 {id:1,img:"images/rendang-sapi.webp",t:["Terlaris", "Berempah"],c:"Makanan",e:"🍖",n:"Rendang Sapi",d:"Daging empuk bumbu rempah khas Padang.",p:25000},
 {id:2,img:"images/ayam-bakar-taliwang.webp",t:["Pedas"],c:"Makanan",e:"🍗",n:"Ayam Bakar Taliwang",d:"Ayam bakar pedas gurih khas Lombok.",p:22000},
-{id:3,img:"images/gudeg-jogja.webp",t:["Manis"],c:"Makanan",e:"🍲",n:"Gudeg Jogja",d:"Nangka muda manis dengan telur dan krecek.",p:88000},
+{id:3,img:"images/gudeg-jogja.webp",t:["Manis"],c:"Makanan",e:"🍲",n:"Gudeg Jogja",d:"Nangka muda manis dengan telur dan krecek.",p:18000},
 {id:4,img:"images/soto-betawi.webp",t:["Berkuah"],c:"Makanan",e:"🥣",n:"Soto Betawi",d:"Kuah santan gurih dengan daging sapi.",p:22000},
 {id:5,img:"images/nasi-goreng-kampung.webp",t:["Gurih"],c:"Makanan",e:"🍳",n:"Nasi Goreng Kampung",d:"Nasi goreng ikan asin, telur mata sapi.",p:18000},
 {id:6,img:"images/sate-ayam-madura.webp",t:["Terlaris"],c:"Makanan",e:"🍢",n:"Sate Ayam Madura",d:"10 tusuk dengan bumbu kacang.",p:20000},
