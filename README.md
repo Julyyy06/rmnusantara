@@ -55,30 +55,8 @@ rumah-makan-nusantara/
 3. Buka **Settings > Pages**, pilih **Branch: `main`** dan **`/ (root)`**, lalu **Save**.
 4. Tunggu 1-2 menit. Situs tampil di `https://julyyy06.github.io/rmnusantara/`.
 
-Setelah itu, ganti `USERNAME` di README ini dengan nama akun GitHub Anda.
-
 </details>
 
-## 🛠️ Cara mengubah isi
-
-<details>
-<summary><b>Klik untuk melihat panduan</b></summary>
-
-Semua pengaturan ada di `script.js`.
-
-| Yang ingin diubah | Di mana |
-|---|---|
-| Nomor WhatsApp (format `62...`), Instagram, TikTok, Facebook, lokasi peta | Bagian `CONFIG` di paling atas |
-| Nama, deskripsi, harga menu | Daftar `MENU` (`n`, `d`, `p`) |
-| Label menu | `t:["Terlaris","Pedas"]` pada menu terkait |
-| Menu habis | Tambahkan `s:1` pada menu terkait |
-| Ulasan pelanggan | Daftar `TESTIMONIALS` (kosong = bagian ulasan tersembunyi) |
-| Foto menu | Ganti file di folder `images/` dengan nama yang sama |
-| Alamat, jam buka, telepon | `index.html`, bagian Kontak |
-
-Setiap perubahan: edit file di GitHub lalu **Commit changes**. Situs ikut diperbarui dalam 1-2 menit.
-
-</details>
 
 ## 📝 Catatan
 
