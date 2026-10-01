@@ -44,4 +44,11 @@ new MutationObserver(mark).observe($("#grid"),{childList:true});
 const c=$("#count");
 new MutationObserver(()=>{c.classList.remove("bump");void c.offsetWidth;c.classList.add("bump")})
   .observe(c,{childList:true,characterData:true,subtree:true});
+
+// ===== Ikon hamburger berubah jadi X saat menu terbuka =====
+const nav=$("#nav"),burger=$("#burger");
+new MutationObserver(()=>{
+  const o=nav.classList.contains("open");
+  burger.textContent=o?"✕":"☰";burger.setAttribute("aria-expanded",o);burger.classList.toggle("x",o);
+}).observe(nav,{attributes:true,attributeFilter:["class"]});
 })();
