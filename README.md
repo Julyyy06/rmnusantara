@@ -10,7 +10,7 @@
 ![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222?style=flat-square&logo=github&logoColor=white)
 ![Tema](https://img.shields.io/badge/Tema-Oranye%20%26%20Krem-E8731A?style=flat-square)
 
-**[🍛 Buka Website](https://USERNAME.github.io/rumah-makan-nusantara/)** &nbsp;·&nbsp; **[📷 Instagram](https://www.instagram.com/rmnu.santara)**
+**[🍛 Buka Website](https://julyyy06.github.io/rmnusantara/)** &nbsp;·&nbsp; **[📷 Instagram](https://www.instagram.com/rmnu.santara)**
 
 <br>
 
@@ -50,10 +50,10 @@ rumah-makan-nusantara/
 <details>
 <summary><b>Klik untuk melihat langkah-langkahnya</b></summary>
 
-1. Buat repositori **Public** bernama `rumah-makan-nusantara`.
+1. Buat repositori **Public** bernama `rmnusantara`.
 2. Klik **Add file > Upload files**, seret isi folder proyek (bukan ZIP-nya), lalu **Commit changes**.
 3. Buka **Settings > Pages**, pilih **Branch: `main`** dan **`/ (root)`**, lalu **Save**.
-4. Tunggu 1-2 menit. Situs tampil di `https://USERNAME.github.io/rumah-makan-nusantara/`.
+4. Tunggu 1-2 menit. Situs tampil di `https://julyyy06.github.io/rmnusantara/`.
 
 Setelah itu, ganti `USERNAME` di README ini dengan nama akun GitHub Anda.
 
