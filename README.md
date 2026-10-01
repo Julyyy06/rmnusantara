@@ -10,7 +10,7 @@
 ![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222?style=flat-square&logo=github&logoColor=white)
 ![Tema](https://img.shields.io/badge/Tema-Oranye%20%26%20Krem-E8731A?style=flat-square)
 
-**[🍛 Buka Website](https://julyyy06.github.io/rmnusantara/)** &nbsp;·&nbsp; **[📷 Instagram](https://www.instagram.com/rmnu.santara)**
+**[🍛 Buka Website](https://julyyy06.github.io/rmnusantara/)** &nbsp;·&nbsp; **[📷 Instagram](https://www.instagram.com/rmnu.santara)** &nbsp;·&nbsp; **[📞 WhatsApp](https://wa.me/62895338079080/)**
 
 <br>
 
