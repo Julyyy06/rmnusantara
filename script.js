@@ -1,50 +1,121 @@
 const CONFIG={wa:"62895338079080",instagram:"https://www.instagram.com/rmnu.santara",tiktok:"",facebook:"",mapsQuery:"Jl. Raya Binong No. 30"};
 const WA=CONFIG.wa;
 const MENU=[
-{id:1,img:"images/rendang-sapi.webp",t:["Terlaris", "Berempah"],c:"Makanan",e:"🍖",n:"Rendang Sapi",d:"Daging empuk bumbu rempah khas Padang.",p:25000},
-{id:2,img:"images/ayam-bakar-taliwang.webp",t:["Pedas"],c:"Makanan",e:"🍗",n:"Ayam Bakar Taliwang",d:"Ayam bakar pedas gurih khas Lombok.",p:22000},
-{id:3,img:"images/gudeg-jogja.webp",t:["Manis"],c:"Makanan",e:"🍲",n:"Gudeg Jogja",d:"Nangka muda manis dengan telur dan krecek.",p:18000},
-{id:4,img:"images/soto-betawi.webp",t:["Berkuah"],c:"Makanan",e:"🥣",n:"Soto Betawi",d:"Kuah santan gurih dengan daging sapi.",p:22000},
-{id:5,img:"images/nasi-goreng-kampung.webp",t:["Gurih"],c:"Makanan",e:"🍳",n:"Nasi Goreng Kampung",d:"Nasi goreng ikan asin, telur mata sapi.",p:18000},
-{id:6,img:"images/sate-ayam-madura.webp",t:["Terlaris"],c:"Makanan",e:"🍢",n:"Sate Ayam Madura",d:"10 tusuk dengan bumbu kacang.",p:20000},
-{id:7,img:"images/gado-gado.webp",t:["Sayuran"],c:"Makanan",e:"🥗",n:"Gado-Gado",d:"Sayur segar, tahu, tempe, saus kacang.",p:16000},
-{id:8,img:"images/ikan-bakar-jimbaran.webp",t:["Baru"],c:"Makanan",e:"🐟",n:"Ikan Bakar Jimbaran",d:"Ikan segar bakar sambal matah.",p:35000},
-{id:9,img:"images/es-teh-manis.webp",t:["Dingin"],c:"Minuman",e:"🧊",n:"Es Teh Manis",d:"Teh segar dingin.",p:5000},
-{id:10,img:"images/es-jeruk.webp",t:["Segar"],c:"Minuman",e:"🍊",n:"Es Jeruk",d:"Jeruk peras asli.",p:7000},
-{id:11,img:"images/wedang-jahe.webp",t:["Hangat"],c:"Minuman",e:"🫚",n:"Wedang Jahe",d:"Jahe hangat dengan gula aren.",p:8000},
-{id:12,img:"images/es-cendol.webp",t:["Dingin", "Manis"],c:"Minuman",e:"🥥",n:"Es Cendol",d:"Cendol, santan, dan gula merah.",p:10000},
-{id:13,img:"images/pisang-goreng.webp",t:["Renyah"],c:"Camilan",e:"🍌",n:"Pisang Goreng",d:"Renyah dengan taburan keju.",p:12000},
-{id:14,img:"images/klepon.webp",t:["Manis"],c:"Camilan",e:"🟢",n:"Klepon",d:"Isi gula merah, balut kelapa parut.",p:8000}];
+{id:1,img:"images/rendang-sapi.webp",t:["Terlaris","Berempah"],c:"Makanan",n:"Rendang Sapi",d:"Daging empuk bumbu rempah khas Padang.",p:25000,r:4.9,rv:126},
+{id:2,img:"images/ayam-bakar-taliwang.webp",t:["Pedas"],c:"Makanan",n:"Ayam Bakar Taliwang",d:"Ayam bakar pedas gurih khas Lombok.",p:22000,r:4.8,rv:84},
+{id:3,img:"images/gudeg-jogja.webp",t:["Manis"],c:"Makanan",n:"Gudeg Jogja",d:"Nangka muda manis dengan telur dan krecek.",p:18000,r:4.7,rv:52},
+{id:4,img:"images/soto-betawi.webp",t:["Berkuah"],c:"Makanan",n:"Soto Betawi",d:"Kuah santan gurih dengan daging sapi.",p:22000,r:4.8,rv:73},
+{id:5,img:"images/nasi-goreng-kampung.webp",t:["Gurih"],c:"Makanan",n:"Nasi Goreng Kampung",d:"Nasi goreng ikan asin, telur mata sapi.",p:18000,r:4.8,rv:91},
+{id:6,img:"images/sate-ayam-madura.webp",t:["Terlaris"],c:"Makanan",n:"Sate Ayam Madura",d:"10 tusuk dengan bumbu kacang.",p:20000,r:4.9,rv:118},
+{id:7,img:"images/gado-gado.webp",t:["Sayuran"],c:"Makanan",n:"Gado-Gado",d:"Sayur segar, tahu, tempe, saus kacang.",p:16000,r:4.7,rv:46},
+{id:8,img:"images/ikan-bakar-jimbaran.webp",t:["Baru"],c:"Makanan",n:"Ikan Bakar Jimbaran",d:"Ikan segar bakar sambal matah.",p:35000,r:4.9,rv:38},
+{id:9,img:"images/es-teh-manis.webp",t:["Dingin"],c:"Minuman",n:"Es Teh Manis",d:"Teh segar dingin.",p:5000,r:4.8,rv:210},
+{id:10,img:"images/es-jeruk.webp",t:["Segar"],c:"Minuman",n:"Es Jeruk",d:"Jeruk peras asli.",p:7000,r:4.8,rv:164},
+{id:11,img:"images/wedang-jahe.webp",t:["Hangat"],c:"Minuman",n:"Wedang Jahe",d:"Jahe hangat dengan gula aren.",p:8000,r:4.7,rv:67},
+{id:12,img:"images/es-cendol.webp",t:["Dingin","Manis"],c:"Minuman",n:"Es Cendol",d:"Cendol, santan, dan gula merah.",p:10000,r:4.8,rv:98},
+{id:13,img:"images/pisang-goreng.webp",t:["Renyah"],c:"Camilan",n:"Pisang Goreng",d:"Renyah dengan taburan keju.",p:12000,r:4.7,rv:59},
+{id:14,img:"images/klepon.webp",t:["Manis"],c:"Camilan",n:"Klepon",d:"Isi gula merah, balut kelapa parut.",p:8000,r:4.8,rv:44}];
+// Gambar bulat untuk tiap kategori (seperti referensi aplikasi)
+const CAT_IMG={"Semua":"images/sate-ayam-madura.webp","Makanan":"images/rendang-sapi.webp","Minuman":"images/es-cendol.webp","Camilan":"images/pisang-goreng.webp"};
+const HEART='<svg class="ic"><use href="#i-heart"/></svg>';
+const STAR='<svg class="ic"><use href="#i-star"/></svg>';
 const $=s=>document.querySelector(s), rp=n=>"Rp"+n.toLocaleString("id-ID");
-let cat="Semua", cart={};
+const esc=t=>String(t).replace(/[<>&"]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
+let cat="Semua", cart={}, favs={};
 try{cart=JSON.parse(localStorage.getItem("rmn-cart")||"{}")}catch(e){}
+try{favs=JSON.parse(localStorage.getItem("rmn-fav")||"{}")}catch(e){}
 const save=()=>{try{localStorage.setItem("rmn-cart",JSON.stringify(cart))}catch(e){}};
+const saveFav=()=>{try{localStorage.setItem("rmn-fav",JSON.stringify(favs))}catch(e){}};
 function toast(t){const el=$("#toast");el.textContent=t;el.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove("on"),1800)}
 
+// ===== Kategori berbentuk chip bergambar =====
 function tabs(){const cs=["Semua",...new Set(MENU.map(m=>m.c))];
-$("#tabs").innerHTML=cs.map(c=>`<button class="tab ${c===cat?"on":""}" data-c="${c}">${c}</button>`).join("")}
-const tags=m=>{const l=m.s?["Habis"]:[].concat(m.t||[]);return l.length?`<div class="tags">${l.map(x=>`<span class="tag">${x}</span>`).join("")}</div>`:""};
+const nf=Object.keys(favs).filter(k=>favs[k]).length;
+$("#tabs").innerHTML=cs.map(c=>`<button class="chip ${c===cat?"on":""}" data-c="${c}" aria-pressed="${c===cat}">
+<span class="chip-img"><img src="${CAT_IMG[c]||MENU.find(m=>m.c===c)?.img||"images/hero.webp"}" alt="" loading="lazy"></span>${c}</button>`).join("")
++`<button class="chip ${cat==="Favorit"?"on":""}" data-c="Favorit" aria-pressed="${cat==="Favorit"}">
+<span class="chip-img chip-ico">${HEART}</span>Favorit${nf?`<i class="chip-num">${nf}</i>`:""}</button>`}
+
+const tags=m=>{const l=m.s?["Habis"]:[].concat(m.t||[]);
+return l.length?`<span class="badge ${l[0]==="Terlaris"?"alt":l[0]==="Baru"?"new":""}">${l[0]}</span>`:""};
+
+// ===== Kartu menu (layout aplikasi) =====
 function menu(){const q=$("#q").value.trim().toLowerCase();
-const l=MENU.filter(m=>(cat==="Semua"||m.c===cat)&&(m.n+m.d).toLowerCase().includes(q));
-$("#grid").innerHTML=l.length?l.map(m=>`<article class="card${m.s?" out":""}"><div class="emo">${tags(m)}${m.img?`<img src="${m.img}" alt="${m.n}" loading="lazy" width="640" height="480">`:`<span>${m.n}</span>`}</div><h3>${m.n}</h3><p>${m.d}</p><div class="row"><span class="price">${rp(m.p)}</span><button class="add" ${m.s?"disabled":""} data-id="${m.id}" aria-label="Tambah ${m.n}">+</button></div></article>`).join(""):`<div class="empty">Menu tidak ditemukan.</div>`}
+const base=cat==="Favorit"?MENU.filter(m=>favs[m.id]):MENU.filter(m=>cat==="Semua"||m.c===cat);
+const l=base.filter(m=>(m.n+m.d).toLowerCase().includes(q));
+const msg=cat==="Favorit"?"Belum ada menu favorit. Ketuk ikon hati pada kartu menu untuk menyimpannya.":"Menu tidak ditemukan. Coba kata kunci lain.";
+$("#grid").innerHTML=l.length?l.map(m=>`<article class="card${m.s?" out":""}">
+<div class="thumb">${tags(m)}<button class="fav${favs[m.id]?" on":""}" data-fav="${m.id}" aria-label="Simpan ${m.n}" aria-pressed="${!!favs[m.id]}">${HEART}</button>
+<img src="${m.img}" alt="${m.n}" loading="lazy" width="640" height="480"></div>
+<div class="cbody"><h3>${m.n}</h3><p class="desc">${m.d}</p>
+<div class="rate">${STAR}${(m.r||4.8).toFixed(1)} <small>(${m.rv||0}+)</small></div>
+<div class="row"><span class="price">${rp(m.p)}</span><button class="add" ${m.s?"disabled":""} data-id="${m.id}" aria-label="Tambah ${m.n} ke keranjang">+</button></div>
+</div></article>`).join(""):`<div class="empty">${msg}</div>`}
+
 function render(){const ids=Object.keys(cart).filter(i=>cart[i]>0);
 let t=0,n=0;
 $("#items").innerHTML=ids.length?ids.map(i=>{const m=MENU.find(x=>x.id==i);t+=m.p*cart[i];n+=cart[i];
-return `<div class="it">${m.img?`<img src="${m.img}" alt="" style="width:44px;height:44px;border-radius:8px;object-fit:cover">`:""}<div class="n">${m.n}<small>${rp(m.p)}</small></div><div class="qty"><button data-m="${i}">−</button><b>${cart[i]}</b><button data-p="${i}">+</button></div></div>`}).join(""):`<p class="empty">Keranjang masih kosong.</p>`;
-$("#total").textContent=rp(t);$("#count").textContent=n;save()}
+return `<div class="it">${m.img?`<img src="${m.img}" alt="">`:""}<div class="n">${m.n}<small>${rp(m.p)}</small></div><div class="qty"><button data-m="${i}" aria-label="Kurangi">−</button><b>${cart[i]}</b><button data-p="${i}" aria-label="Tambah">+</button></div></div>`}).join(""):`<p class="empty">Keranjang masih kosong.</p>`;
+$("#total").textContent=rp(t);$("#count").textContent=n;save();
+// Label tombol cetak struk mengikuti isi keranjang
+if($("#printLabel"))$("#printLabel").textContent=n?"Cetak Struk":(lastOrder?"Cetak Struk Terakhir":"Cetak Struk")}
 const drawer=open=>{$("#drawer").classList.toggle("on",open);$("#ov").classList.toggle("on",open)};
 
-$("#tabs").onclick=e=>{const c=e.target.dataset.c;if(c){cat=c;tabs();menu()}};
-$("#q").oninput=menu;
-$("#grid").onclick=e=>{const b=e.target.closest(".add");if(!b)return;const id=b.dataset.id;cart[id]=(cart[id]||0)+1;render();toast(MENU.find(m=>m.id==id).n+" ditambahkan")};
+$("#tabs").onclick=e=>{const c=e.target.closest(".chip")?.dataset.c;if(c){cat=c;tabs();refreshGrid()}};
+// Pencarian di header: perbarui hasil + tampilkan jumlah yang ditemukan
+function updateSearchCount(){
+  const box=$("#searchCount"),q=$("#q").value.trim();
+  if(!box)return;
+  if(!q){box.hidden=true;box.textContent="";return}
+  const n=MENU.filter(m=>(cat==="Semua"||m.c===cat)&&(m.n+m.d).toLowerCase().includes(q.toLowerCase())).length;
+  box.hidden=false;
+  box.textContent=n?`${n} menu ditemukan untuk “${q}”`:`Tidak ada menu untuk “${q}”`;
+}
+// Perbarui daftar menu TANPA membuat halaman meloncat.
+// Jika bagian menu sudah berada di ATAS area pandang, mengubah tingginya akan
+// menggeser seluruh konten yang sedang dilihat — itulah penyebab halaman
+// terlihat "naik sendiri" saat menekan backspace. Posisi konten lalu dijaga tetap.
+// Kalau menu masih terlihat/belum terlewati, biarkan aliran normal (tanpa koreksi).
+function refreshGrid(){
+  const menuEl=document.getElementById("menu"),anchor=document.getElementById("promo");
+  if(!menuEl||!anchor){menu();updateSearchCount();return}
+  const above=menuEl.getBoundingClientRect().bottom<=0;
+  const y0=anchor.getBoundingClientRect().top;
+  menu();updateSearchCount();
+  if(!above)return;
+  const diff=anchor.getBoundingClientRect().top-y0;
+  if(!diff)return;
+  const de=document.documentElement,prev=de.style.scrollBehavior;
+  de.style.scrollBehavior="auto";           // jangan ikut animasi smooth
+  window.scrollBy(0,diff);
+  de.style.scrollBehavior=prev;
+}
+$("#q").oninput=refreshGrid;
+$("#q").onsearch=refreshGrid;
+$("#grid").onclick=e=>{
+const f=e.target.closest(".fav");
+if(f){const id=f.dataset.fav;favs[id]=!favs[id];f.classList.toggle("on",favs[id]);
+f.setAttribute("aria-pressed",!!favs[id]);saveFav();tabs();
+toast(favs[id]?"Disimpan ke favorit":"Dihapus dari favorit");
+if(cat==="Favorit")refreshGrid();return}
+const b=e.target.closest(".add");if(!b)return;const id=b.dataset.id;
+const wasEmpty=!Object.keys(cart).length;
+cart[id]=(cart[id]||0)+1;render();
+const m=MENU.find(m=>m.id==id);toast(m.n+" ditambahkan");
+if(wasEmpty)addNote({i:"i-bag",t:"Keranjang terisi",d:m.n+" siap dipesan. Selesaikan pesanan lewat WhatsApp.",go:"#menu"})};
 $("#items").onclick=e=>{const m=e.target.dataset.m,p=e.target.dataset.p;if(m){cart[m]--;if(cart[m]<=0)delete cart[m]}if(p)cart[p]++;if(m||p)render()};
 $("#openCart").onclick=()=>drawer(true);$("#closeCart").onclick=$("#ov").onclick=()=>drawer(false);
 $("#checkout").onclick=()=>{const ids=Object.keys(cart);
 if(!ids.length)return toast("Keranjang masih kosong");
 const name=$("#cn").value.trim();if(!name){$("#cn").focus();return toast("Isi nama pemesan dulu")}
-let t=0;const lines=ids.map(i=>{const m=MENU.find(x=>x.id==i);t+=m.p*cart[i];return `- ${m.n} x${cart[i]} = ${rp(m.p*cart[i])}`});
-const msg=`Halo Rumah Makan Nusantara, saya ingin memesan:\n${lines.join("\n")}\n\nTotal: ${rp(t)}\nAtas nama: ${name}\nTipe: ${$("#cm").value}`;
+let t=0;const items=ids.map(i=>{const m=MENU.find(x=>x.id==i);t+=m.p*cart[i];return{n:m.n,p:m.p,q:cart[i]}});
+const lines=items.map(i=>`- ${i.n} x${i.q} = ${rp(i.p*i.q)}`);
+const msg=`Halo Nusa & Spice, saya ingin memesan:\n${lines.join("\n")}\n\nTotal: ${rp(t)}\nAtas nama: ${name}\nTipe: ${$("#cm").value}`;
 window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,"_blank");
+// Simpan struk terakhir agar bisa dicetak
+lastOrder={no:noStruk(),time:Date.now(),name,type:$("#cm").value,items,total:t};
+try{localStorage.setItem("rmn-last",JSON.stringify(lastOrder))}catch(e){}
+addNote({i:"i-check",t:"Pesanan dikirim ke WhatsApp",d:`${items.length} menu · ${rp(t)} · struk ${lastOrder.no}`,go:""});
 cart={};render();drawer(false);toast("Pesanan dikirim ke WhatsApp")};
 
 $("#burger").onclick=()=>$("#nav").classList.toggle("open");
@@ -59,24 +130,94 @@ const n=$("#rn").value.trim(),p=$("#rp").value.replace(/[\s-]/g,""),d=$("#rd").v
 if(!n)return toast("Nama wajib diisi");
 if(!/^(\+62|62|0)8\d{7,11}$/.test(p))return toast("Nomor WhatsApp tidak valid");
 if(!d||d<today)return toast("Pilih tanggal yang valid");
-const msg=`Halo Rumah Makan Nusantara, saya ingin reservasi:\nNama: ${n}\nTelepon: ${p}\nTanggal: ${d}\nJam: ${$("#rt").value}\nJumlah tamu: ${$("#rg").value} orang`;
+const msg=`Halo Nusa & Spice, saya ingin reservasi:\nNama: ${n}\nTelepon: ${p}\nTanggal: ${d}\nJam: ${$("#rt").value}\nJumlah tamu: ${$("#rg").value} orang`;
 const url=`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
 const ok=$("#rok");ok.hidden=false;
-ok.innerHTML=`✅ Terima kasih, ${n.replace(/[<>&]/g,"")}! Permintaan reservasi siap dikirim. <a href="${url}" target="_blank" rel="noopener">Konfirmasi via WhatsApp →</a>`;
-window.open(url,"_blank");toast("Reservasi dibuat");e.target.reset();$("#rd").value=today};
+ok.innerHTML=`<svg class="ic"><use href="#i-check"/></svg><span>Terima kasih, ${n.replace(/[<>&]/g,"")}! Permintaan reservasi siap dikirim. <a href="${url}" target="_blank" rel="noopener">Konfirmasi via WhatsApp <svg class="ic"><use href="#i-arrow"/></svg></a></span>`;
+window.open(url,"_blank");toast("Reservasi dibuat");
+addNote({i:"i-check",t:"Reservasi terkirim",d:`${n} · ${d} · ${$("#rt").value} · ${$("#rg").value} orang`,go:"#reservasi"});
+e.target.reset();$("#rd").value=today};
 
 $("#yr").textContent=new Date().getFullYear();
+
+/* ===== Notifikasi (panel lonceng) ===== */
+const NOTES_KEY="rmn-notes";
+let notes=[];
+try{notes=JSON.parse(localStorage.getItem(NOTES_KEY)||"[]")}catch(e){}
+const saveNotes=()=>{try{localStorage.setItem(NOTES_KEY,JSON.stringify(notes))}catch(e){}};
+function ago(ts){const d=Math.floor((Date.now()-ts)/60000);
+if(d<1)return"Baru saja";if(d<60)return d+" menit lalu";
+if(d<1440)return Math.floor(d/60)+" jam lalu";return Math.floor(d/1440)+" hari lalu"}
+const NOTE_ICON=t=>({promo:"i-tag",order:"i-check",cart:"i-bag",book:"i-clock",info:"i-bell"}[t]||"i-bell");
+function addNote(o){o=o||{};
+notes.unshift({id:Date.now(),icon:o.i||NOTE_ICON(o.type||"info"),
+  title:o.t||o.title||"Tanpa judul",text:o.d||o.text||"",go:o.go||"",time:Date.now(),read:false});
+if(notes.length>25)notes.length=25;saveNotes();paintNotes()}
+function paintNotes(){
+const unread=notes.filter(n=>!n.read).length;
+const badge=$("#ncount");badge.textContent=unread;badge.hidden=unread===0;
+$("#notesList").innerHTML=notes.length?notes.map(n=>`<li class="note${n.read?" read":""}" data-id="${n.id}">
+<span class="ni"><svg class="ic"><use href="#${n.icon||"i-bell"}"/></svg></span>
+<span class="nt"><b>${esc(n.title)}</b><small>${esc(n.text)}</small><em>${ago(n.time)}</em></span></li>`).join("")
+:`<li class="nempty">Belum ada notifikasi.</li>`}
+const notesPanel=$("#notes"),bell=$("#bell");
+function toggleNotes(f){const open=f===undefined?notesPanel.hidden:f;
+notesPanel.hidden=!open;bell.setAttribute("aria-expanded",open);if(open)paintNotes()}
+bell.onclick=e=>{e.stopPropagation();toggleNotes()};
+notesPanel.onclick=e=>e.stopPropagation();
+$("#notesList").onclick=e=>{const li=e.target.closest(".note");if(!li)return;
+const n=notes.find(x=>x.id==li.dataset.id);if(n){n.read=true;saveNotes();paintNotes();
+const t=n.go&&document.getElementById(n.go.slice(1));
+if(t)t.scrollIntoView({behavior:"smooth",block:"start"});toggleNotes(false)}};
+$("#readAll").onclick=()=>{notes.forEach(n=>n.read=true);saveNotes();paintNotes();toast("Semua notifikasi ditandai sudah dibaca")};
+document.addEventListener("click",()=>{if(!notesPanel.hidden)toggleNotes(false)});
+paintNotes();
+
+/* ===== Cetak struk ===== */
+let lastOrder=null;
+try{lastOrder=JSON.parse(localStorage.getItem("rmn-last")||"null")}catch(e){}
+const noStruk=()=>"NS-"+new Date().toISOString().slice(2,10).replace(/-/g,"")+"-"+Math.floor(100+Math.random()*900);
+function currentOrder(){const ids=Object.keys(cart).filter(i=>cart[i]>0);
+if(!ids.length)return null;
+let t=0;const items=ids.map(i=>{const m=MENU.find(x=>x.id==i);t+=m.p*cart[i];return{n:m.n,p:m.p,q:cart[i]}});
+return{no:noStruk(),time:Date.now(),name:$("#cn").value.trim()||"Pelanggan",type:$("#cm").value,items,total:t}}
+function printStruk(o){
+const d=new Date(o.time),two=n=>String(n).padStart(2,"0");
+const s=$("#struk");
+s.innerHTML=`<div class="slip">
+<b class="s-brand">Nusa &amp; Spice</b>
+<span class="s-tag">INDONESIAN SPICE KITCHEN</span>
+<span>Jl. Raya Binong No. 30 · 0895-3380-79080</span>
+<div class="s-rule"></div>
+<div class="s-row"><span>No. struk</span><b>${esc(o.no)}</b></div>
+<div class="s-row"><span>Tanggal</span><span>${two(d.getDate())}/${two(d.getMonth()+1)} ${two(d.getHours())}:${two(d.getMinutes())}</span></div>
+<div class="s-row"><span>Pelanggan</span><span>${esc(o.name)}</span></div>
+<div class="s-row"><span>Tipe</span><span>${esc(o.type)}</span></div>
+<div class="s-rule"></div>
+<table class="s-items"><tbody>${o.items.map(i=>`<tr><td>${esc(i.n)}<br><small>${i.q} × ${rp(i.p)}</small></td><td>${rp(i.p*i.q)}</td></tr>`).join("")}</tbody></table>
+<div class="s-rule"></div>
+<div class="s-row s-total"><span>Total</span><b>${rp(o.total)}</b></div>
+<div class="s-rule"></div>
+<span class="s-thanks">Terima kasih sudah memesan di Nusa &amp; Spice.<br>Selamat menikmati hidangan Anda.</span>
+<span class="s-fine">Ini adalah struk cetak dari website Nusa &amp; Spice.</span>
+</div>`;
+const prev=document.title;document.title="Struk-"+o.no;
+window.print();document.title=prev}
+$("#printBtn").onclick=()=>{const o=currentOrder()||lastOrder;
+if(!o)return toast("Belum ada pesanan untuk dicetak");
+if(!currentOrder())toast("Mencetak pesanan terakhir");printStruk(o)};
+window.addEventListener("afterprint",()=>{$("#struk").innerHTML=""});
+
 tabs();menu();render();
 
 // ===== Fitur tambahan =====
 // Isi ulasan ASLI pelanggan di sini agar bagian "Ulasan" muncul. Contoh: {nama:"Budi",teks:"Enak sekali!",bintang:5}
 const TESTIMONIALS=[{nama:"Budi",teks:"Rendangnya empuk dan bumbunya terasa.",bintang:5},{nama:"Sari",teks:"Tempatnya nyaman untuk makan bersama keluarga.",bintang:5}];
-const esc=t=>String(t).replace(/[<>&"]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
 $("#gal").innerHTML=[1,2,5,7,8,14].map(i=>MENU.find(m=>m.id==i)).map(m=>`<button class="gi" data-s="${m.img}" aria-label="Perbesar ${m.n}"><img src="${m.img}" alt="${m.n}" loading="lazy"></button>`).join("");
 $("#gal").onclick=e=>{const b=e.target.closest(".gi");if(b){$("#lbi").src=b.dataset.s;$("#lb").classList.add("on")}};
 $("#lb").onclick=()=>$("#lb").classList.remove("on");
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){$("#lb").classList.remove("on");drawer(false)}});
-if(TESTIMONIALS.length){$("#ulasan").hidden=false;$("#tg").innerHTML=TESTIMONIALS.map(t=>`<div class="tc"><div class="price">${"★".repeat(t.bintang||5)}</div><p>${esc(t.teks)}</p><b>${esc(t.nama)}</b></div>`).join("")}
+if(TESTIMONIALS.length){$("#ulasan").hidden=false;$("#tg").innerHTML=TESTIMONIALS.map(t=>`<div class="tc"><div class="stars">${STAR.repeat(t.bintang||5)}</div><p>${esc(t.teks)}</p><b>${esc(t.nama)}</b></div>`).join("")}
 $("#map").src="https://www.google.com/maps?q="+encodeURIComponent(CONFIG.mapsQuery)+"&output=embed";
-$("#wafab").href="https://wa.me/"+WA+"?text="+encodeURIComponent("Halo Rumah Makan Nusantara, saya ingin bertanya.");
+$("#wafab").href="https://wa.me/"+WA+"?text="+encodeURIComponent("Halo Nusa & Spice, saya ingin bertanya.");
 $("#soc").innerHTML=[["Instagram",CONFIG.instagram],["TikTok",CONFIG.tiktok],["Facebook",CONFIG.facebook]].filter(x=>x[1]).map(x=>`<a href="${x[1]}" target="_blank" rel="noopener">${x[0]}</a>`).join("");

@@ -1,14 +1,14 @@
 <div align="center">
 
-<img src="assets/banner.svg" alt="Rumah Makan Nusantara" width="100%">
+<img src="assets/banner.svg" alt="Nusa & Spice" width="100%">
 
-### Website rumah makan dengan menu digital, keranjang pesanan, dan reservasi via WhatsApp
+### Website dapur rempah Nusantara dengan menu digital, keranjang pesanan, dan reservasi via WhatsApp
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222?style=flat-square&logo=github&logoColor=white)
-![Tema](https://img.shields.io/badge/Tema-Oranye%20%26%20Krem-E8731A?style=flat-square)
+![Tema](https://img.shields.io/badge/Tema-Rempah%20Oranye-E8731F?style=flat-square)
 
 **[🍛 Buka Website](https://julyyy06.github.io/rmnusantara/)** &nbsp;·&nbsp; **[📷 Instagram](https://www.instagram.com/rmnu.santara)** &nbsp;·&nbsp; **[📞 WhatsApp](https://wa.me/62895338079080/)**
 
@@ -24,23 +24,37 @@
 
 | | Fitur | Keterangan |
 |---|---|---|
-| 🍽️ | **Menu digital** | 14 menu berfoto, filter kategori, pencarian, dan label (Terlaris, Pedas, Baru, dll.) |
+| 🍽️ | **Menu digital** | 14 menu berfoto, chip kategori bergambar, pencarian, rating, dan label (Terlaris, Pedas, Baru, dll.) |
 | 🛒 | **Keranjang pesanan** | Tambah/kurang porsi, total otomatis, tersimpan di browser |
+| ❤️ | **Favorit** | Simpan menu favorit lewat tombol hati, lalu lihat lewat chip **Favorit** |
+| 🔔 | **Notifikasi** | Panel lonceng berisi notifikasi nyata (keranjang, pesanan, reservasi, promo) dengan jumlah belum dibaca |
+| 🧾 | **Cetak struk** | Struk pesanan berformat termal (76 mm) — cetak lewat tombol di keranjang atau Ctrl+P |
+| 🎠 | **Banner promo** | Carousel penawaran + banner kombo hemat di tengah halaman |
 | 💬 | **Pesan via WhatsApp** | Pesanan tersusun rapi dan langsung terkirim ke WhatsApp rumah makan |
 | 📅 | **Reservasi meja** | Form dengan validasi tanggal dan nomor, konfirmasi via WhatsApp |
 | 🖼️ | **Galeri foto** | Klik foto untuk memperbesar |
 | 📍 | **Peta & kontak** | Google Maps, alamat, jam buka, dan tombol WhatsApp mengambang |
 | 🌗 | **Mode terang/gelap** | Mengikuti pengaturan perangkat |
-| 📱 | **Responsif** | Nyaman di ponsel maupun komputer |
+| 📱 | **Responsif** | Layout aplikasi: navigasi bawah + tombol pesan mengambang di ponsel |
+
+## 🎨 Desain
+
+- **Antarmuka gaya aplikasi**: app bar lengket dengan pencarian, banner carousel, chip kategori, kartu menu, dan bilah navigasi bawah dengan tombol pesan (FAB).
+- **Warna diambil dari logo** `logo/logo-nusa-spice-terang.svg`:
+  primer `#E8731F` · emas `#F2A64A` · rust `#B8431A` · tinta `#3B2A1E` · lembut `#8A6A52`.
+- **Tipografi**: *Playfair Display* untuk judul & logo, *DM Sans* untuk teks UI.
 
 ## 🗂️ Struktur
 
 ```
-rumah-makan-nusantara/
+nusa-spice/
 ├── index.html      halaman utama
-├── style.css       tampilan
+├── style.css       tampilan (tema warna logo)
 ├── script.js       menu, keranjang, reservasi, pengaturan (CONFIG)
-├── favicon.svg     ikon tab browser
+├── extras.js       tema, animasi, carousel, navigasi bawah
+├── favicon.svg     ikon tab browser (lambang bunga lawang)
+├── logo/           logo resmi Nusa & Spice (SVG)
+├── references/     referensi desain UI/UX
 ├── assets/         gambar untuk README
 └── images/         foto menu dan foto utama (.webp)
 ```
@@ -67,6 +81,6 @@ rumah-makan-nusantara/
 
 <div align="center">
 
-Dibuat untuk **Rumah Makan Nusantara** · Jl. Raya Binong No. 30
+Dibuat untuk **Nusa & Spice** · Jl. Raya Binong No. 30
 
 </div>
