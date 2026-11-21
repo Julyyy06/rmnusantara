@@ -18,11 +18,14 @@ const paint=()=>{
   const m=document.querySelector('meta[name="theme-color"]');
   if(m)m.content=isDark()?"#241812":"#E8731F";
 };
+let themeChanging=false;
 btn.onclick=()=>{
+  if(themeChanging)return;
+  themeChanging=true;
   const t=isDark()?"light":"dark";
   root.classList.add("theming");root.dataset.theme=t;
   try{localStorage.setItem("rmn-theme",t)}catch(e){}
-  paint();setTimeout(()=>root.classList.remove("theming"),450);
+  paint();setTimeout(()=>{root.classList.remove("theming");themeChanging=false},450);
 };
 sys.addEventListener("change",paint);paint();
 

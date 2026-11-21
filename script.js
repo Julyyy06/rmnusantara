@@ -32,9 +32,11 @@ function toast(t){const el=$("#toast");el.textContent=t;el.classList.add("on");c
 function tabs(){const cs=["Semua",...new Set(MENU.map(m=>m.c))];
 const nf=Object.keys(favs).filter(k=>favs[k]).length;
 $("#tabs").innerHTML=cs.map(c=>`<button class="chip ${c===cat?"on":""}" data-c="${c}" aria-pressed="${c===cat}">
-<span class="chip-img"><img src="${CAT_IMG[c]||MENU.find(m=>m.c===c)?.img||"images/hero.webp"}" alt="" loading="lazy"></span>${c}</button>`).join("")
+<span class="chip-thumb"><span class="chip-img"><img src="${CAT_IMG[c]||MENU.find(m=>m.c===c)?.img||"images/hero.webp"}" alt="" loading="lazy"></span></span>
+<span class="chip-txt">${c}</span></button>`).join("")
 +`<button class="chip ${cat==="Favorit"?"on":""}" data-c="Favorit" aria-pressed="${cat==="Favorit"}">
-<span class="chip-img chip-ico">${HEART}</span>Favorit${nf?`<i class="chip-num">${nf}</i>`:""}</button>`}
+<span class="chip-thumb"><span class="chip-img chip-ico">${HEART}</span>${nf?`<i class="chip-num">${nf}</i>`:""}</span>
+<span class="chip-txt">Favorit</span></button>`}
 
 const tags=m=>{const l=m.s?["Habis"]:[].concat(m.t||[]);
 return l.length?`<span class="badge ${l[0]==="Terlaris"?"alt":l[0]==="Baru"?"new":""}">${l[0]}</span>`:""};
@@ -52,10 +54,186 @@ $("#grid").innerHTML=l.length?l.map(m=>`<article class="card${m.s?" out":""}">
 <div class="row"><span class="price">${rp(m.p)}</span><button class="add" ${m.s?"disabled":""} data-id="${m.id}" aria-label="Tambah ${m.n} ke keranjang">+</button></div>
 </div></article>`).join(""):`<div class="empty">${msg}</div>`}
 
+// ===== Pilihan Promo Paket =====
+const PROMOS = [
+  {
+    id: "keluarga",
+    n: "Paket Keluarga Rempah",
+    d: "Rendang Sapi + Sate Ayam + Gado-Gado + Es Teh Manis",
+    disc: 0.30,
+    discLabel: "30% OFF",
+    items: [1, 6, 7, 9],
+    img: "images/rendang-sapi.webp",
+    badge: "HEMAT 30%"
+  },
+  {
+    id: "berdua",
+    n: "Paket Kenyang Berdua",
+    d: "Ayam Bakar Taliwang + Nasi Goreng Kampung + Es Teh Manis + Es Jeruk",
+    disc: 0.20,
+    discLabel: "20% OFF",
+    items: [2, 5, 9, 10],
+    img: "images/ayam-bakar-taliwang.webp",
+    badge: "HEMAT 20%"
+  },
+  {
+    id: "solo",
+    n: "Paket Solo Mantap",
+    d: "Soto Betawi gurih hangat + Es Jeruk peras segar",
+    disc: 0.15,
+    discLabel: "15% OFF",
+    items: [4, 10],
+    img: "images/soto-betawi.webp",
+    badge: "HEMAT 15%"
+  },
+  {
+    id: "nyemil",
+    n: "Paket Manis Sore",
+    d: "Pisang Goreng keju renyah + Es Cendol manis legit",
+    disc: 0.20,
+    discLabel: "20% OFF",
+    items: [13, 12],
+    img: "images/pisang-goreng.webp",
+    badge: "HEMAT 20%"
+  }
+];
+
+let selectedPromo = "auto";
+try { selectedPromo = localStorage.getItem("rmn-promo") || "auto"; } catch(e){}
+
+function calcPromoFor(p) {
+  if (!p) return { qualified: false, discount: 0, count: 0, missing: [], rawPrice: 0, promoPrice: 0 };
+  const count = Math.min(...p.items.map(id => cart[id] || 0));
+  const rawPrice = p.items.reduce((s, id) => s + (MENU.find(m => m.id === id)?.p || 0), 0);
+  const discountPerSet = Math.round(rawPrice * p.disc);
+  const missing = p.items.filter(id => !cart[id] || cart[id] < 1);
+  return {
+    qualified: count >= 1,
+    count: Math.max(0, count),
+    discount: count >= 1 ? discountPerSet * count : 0,
+    rawPrice,
+    promoPrice: rawPrice - discountPerSet,
+    missing
+  };
+}
+
+function getActivePromo() {
+  if (selectedPromo === "none") {
+    return { promo: null, qualified: false, discount: 0, count: 0, missing: [] };
+  }
+  if (selectedPromo === "auto") {
+    let best = null, bestRes = null;
+    for (const p of PROMOS) {
+      const res = calcPromoFor(p);
+      if (res.qualified && (!bestRes || res.discount > bestRes.discount)) {
+        best = p;
+        bestRes = res;
+      }
+    }
+    if (best && bestRes && bestRes.discount > 0) {
+      return { promo: best, ...bestRes };
+    }
+    return { promo: null, qualified: false, discount: 0, count: 0, missing: [] };
+  }
+  const target = PROMOS.find(p => p.id === selectedPromo);
+  if (!target) return { promo: null, qualified: false, discount: 0, count: 0, missing: [] };
+  return { promo: target, ...calcPromoFor(target) };
+}
+
+function addPackage(id) {
+  const p = PROMOS.find(x => x.id === id);
+  if (!p) return;
+  p.items.forEach(itemId => {
+    cart[itemId] = (cart[itemId] || 0) + 1;
+  });
+  selectedPromo = p.id;
+  try { localStorage.setItem("rmn-promo", selectedPromo); } catch(e){}
+  render();
+  drawer(true);
+  toast(`${p.n} dipilih! Diskon ${p.discLabel}`);
+  addNote({
+    i: "i-tag",
+    t: `${p.n} Ditambahkan`,
+    d: `Menu paket masuk keranjang dengan promo ${p.discLabel}.`,
+    go: "#promo"
+  });
+}
+
+function renderPromoList() {
+  const el = $("#promoList");
+  if (!el) return;
+  el.innerHTML = PROMOS.map(p => {
+    const raw = p.items.reduce((s, id) => s + (MENU.find(m => m.id === id)?.p || 0), 0);
+    const disc = Math.round(raw * p.disc);
+    const net = raw - disc;
+    return `<article class="promo-card">
+      <div class="promo-card-body">
+        <span class="pill-tag">${p.badge}</span>
+        <h3>${p.n}</h3>
+        <p>${p.d}</p>
+        <div class="promo-prices">
+          <span class="new">${rp(net)}</span>
+          <span class="old">${rp(raw)}</span>
+        </div>
+        <button type="button" class="btn-promo" data-pack="${p.id}">
+          Pilih Paket Ini <svg class="ic arr"><use href="#i-arrow"/></svg>
+        </button>
+      </div>
+      <div class="promo-card-visual">
+        <img src="${p.img}" alt="${p.n}" loading="lazy">
+        <span class="badge-disc">${p.discLabel}</span>
+      </div>
+    </article>`;
+  }).join("");
+}
+
 function render(){const ids=Object.keys(cart).filter(i=>cart[i]>0);
 let t=0,n=0;
 $("#items").innerHTML=ids.length?ids.map(i=>{const m=MENU.find(x=>x.id==i);t+=m.p*cart[i];n+=cart[i];
 return `<div class="it">${m.img?`<img src="${m.img}" alt="">`:""}<div class="n">${m.n}<small>${rp(m.p)}</small></div><div class="qty"><button data-m="${i}" aria-label="Kurangi">−</button><b>${cart[i]}</b><button data-p="${i}" aria-label="Tambah">+</button></div></div>`}).join(""):`<p class="empty">Keranjang masih kosong.</p>`;
+
+// Update UI promo selector di keranjang
+const promoBox = $("#promoBox");
+const promoChoice = $("#promoChoice");
+const promoDetail = $("#promoDetail");
+const act = getActivePromo();
+
+if (promoBox) promoBox.style.display = ids.length ? "flex" : "none";
+
+if (promoChoice) {
+  const opts = [
+    { id: "auto", label: "✨ Otomatis (Promo Terbaik)" },
+    { id: "none", label: "Tanpa Promo" },
+    ...PROMOS.map(p => {
+      const res = calcPromoFor(p);
+      const tag = res.qualified ? " [BISA DIPAKAI]" : "";
+      return { id: p.id, label: `${p.n} (${p.discLabel})${tag}` };
+    })
+  ];
+  promoChoice.innerHTML = opts.map(o => `<option value="${o.id}" ${o.id === selectedPromo ? "selected" : ""}>${o.label}</option>`).join("");
+}
+
+if (promoDetail) {
+  if (!ids.length) {
+    promoDetail.innerHTML = "";
+  } else if (act.qualified && act.discount > 0) {
+    promoDetail.className = "promo-status active";
+    promoDetail.innerHTML = `<svg class="ic"><use href="#i-check"/></svg><div><b>${act.promo.n} Aktif!</b><br><small>Diskon ${act.promo.discLabel}${act.count > 1 ? ` (x${act.count} paket)` : ""}</small></div><span class="saved">-${rp(act.discount)}</span>`;
+  } else if (selectedPromo !== "auto" && selectedPromo !== "none" && act.promo) {
+    const missingNames = act.missing.map(id => MENU.find(m => m.id === id)?.n).join(", ");
+    promoDetail.className = "promo-status missing";
+    promoDetail.innerHTML = `<div><b>${act.promo.n}</b><br><small>Kurang: ${esc(missingNames)}</small></div><button type="button" class="btn-lengkapi" data-lengkapi="${act.promo.id}">+ Lengkapi</button>`;
+  } else if (selectedPromo === "none") {
+    promoDetail.className = "promo-status missing";
+    promoDetail.innerHTML = `<div><small>Promo dinonaktifkan.</small></div>`;
+  } else {
+    promoDetail.className = "promo-status missing";
+    promoDetail.innerHTML = `<div><small>Belum ada paket kombo yang lengkap. Pilih promo di atas untuk hemat.</small></div>`;
+  }
+}
+
+const promoDisc = (act.qualified && act.discount > 0) ? act.discount : 0;
+t = Math.max(0, t - promoDisc);
 $("#total").textContent=rp(t);$("#count").textContent=n;save();
 // Label tombol cetak struk mengikuti isi keranjang
 if($("#printLabel"))$("#printLabel").textContent=n?"Cetak Struk":(lastOrder?"Cetak Struk Terakhir":"Cetak Struk")}
@@ -109,14 +287,47 @@ $("#checkout").onclick=()=>{const ids=Object.keys(cart);
 if(!ids.length)return toast("Keranjang masih kosong");
 const name=$("#cn").value.trim();if(!name){$("#cn").focus();return toast("Isi nama pemesan dulu")}
 let t=0;const items=ids.map(i=>{const m=MENU.find(x=>x.id==i);t+=m.p*cart[i];return{n:m.n,p:m.p,q:cart[i]}});
+const act=getActivePromo();
+const promoDisc=(act.qualified&&act.discount>0)?act.discount:0;
 const lines=items.map(i=>`- ${i.n} x${i.q} = ${rp(i.p*i.q)}`);
+if(promoDisc>0){lines.push(`\n🎉 Promo ${act.promo.n} (${act.promo.discLabel}): -${rp(promoDisc)}`)}
+t=Math.max(0,t-promoDisc);
 const msg=`Halo Nusa & Spice, saya ingin memesan:\n${lines.join("\n")}\n\nTotal: ${rp(t)}\nAtas nama: ${name}\nTipe: ${$("#cm").value}`;
 window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,"_blank");
 // Simpan struk terakhir agar bisa dicetak
-lastOrder={no:noStruk(),time:Date.now(),name,type:$("#cm").value,items,total:t};
+lastOrder={no:noStruk(),time:Date.now(),name,type:$("#cm").value,items,total:t,discount:promoDisc,promoName:act.qualified?act.promo.n:"",discLabel:act.qualified?act.promo.discLabel:""};
 try{localStorage.setItem("rmn-last",JSON.stringify(lastOrder))}catch(e){}
-addNote({i:"i-check",t:"Pesanan dikirim ke WhatsApp",d:`${items.length} menu · ${rp(t)} · struk ${lastOrder.no}`,go:""});
+addNote({i:"i-check",t:"Pesanan dikirim ke WhatsApp",d:`${items.length} menu · ${rp(t)}${promoDisc?` · Diskon -${rp(promoDisc)}`:""} · struk ${lastOrder.no}`,go:""});
 cart={};render();drawer(false);toast("Pesanan dikirim ke WhatsApp")};
+
+if($("#promoChoice")){
+  $("#promoChoice").onchange=e=>{
+    selectedPromo=e.target.value;
+    try{localStorage.setItem("rmn-promo",selectedPromo)}catch(err){}
+    render();
+    const act=getActivePromo();
+    if(act.qualified&&act.discount>0)toast(`Promo ${act.promo.n} diterapkan!`);
+  };
+}
+$("#drawer").onclick=e=>{
+  const b=e.target.closest("[data-lengkapi]");
+  if(b){
+    const p=PROMOS.find(x=>x.id===b.dataset.lengkapi);
+    if(p){
+      p.items.forEach(id=>{if(!cart[id]||cart[id]<1)cart[id]=1});
+      selectedPromo=p.id;
+      try{localStorage.setItem("rmn-promo",selectedPromo)}catch(err){}
+      render();
+      toast(`${p.n} berhasil dilengkapi!`);
+    }
+  }
+};
+if($("#promoList")){
+  $("#promoList").onclick=e=>{
+    const btn=e.target.closest("[data-pack]");
+    if(btn)addPackage(btn.dataset.pack);
+  };
+}
 
 $("#burger").onclick=()=>$("#nav").classList.toggle("open");
 $("#nav").onclick=e=>{if(e.target.tagName==="A")$("#nav").classList.remove("open")};
@@ -180,7 +391,10 @@ const noStruk=()=>"NS-"+new Date().toISOString().slice(2,10).replace(/-/g,"")+"-
 function currentOrder(){const ids=Object.keys(cart).filter(i=>cart[i]>0);
 if(!ids.length)return null;
 let t=0;const items=ids.map(i=>{const m=MENU.find(x=>x.id==i);t+=m.p*cart[i];return{n:m.n,p:m.p,q:cart[i]}});
-return{no:noStruk(),time:Date.now(),name:$("#cn").value.trim()||"Pelanggan",type:$("#cm").value,items,total:t}}
+const act=getActivePromo();
+const promoDisc=(act.qualified&&act.discount>0)?act.discount:0;
+t=Math.max(0,t-promoDisc);
+return{no:noStruk(),time:Date.now(),name:$("#cn").value.trim()||"Pelanggan",type:$("#cm").value,items,total:t,discount:promoDisc,promoName:act.qualified?act.promo.n:"",discLabel:act.qualified?act.promo.discLabel:""}}
 function printStruk(o){
 const d=new Date(o.time),two=n=>String(n).padStart(2,"0");
 const s=$("#struk");
@@ -195,6 +409,7 @@ s.innerHTML=`<div class="slip">
 <div class="s-row"><span>Tipe</span><span>${esc(o.type)}</span></div>
 <div class="s-rule"></div>
 <table class="s-items"><tbody>${o.items.map(i=>`<tr><td>${esc(i.n)}<br><small>${i.q} × ${rp(i.p)}</small></td><td>${rp(i.p*i.q)}</td></tr>`).join("")}</tbody></table>
+${o.discount?`<div class="s-rule"></div><div class="s-row"><span>${esc(o.promoName||"Promo")} (${esc(o.discLabel||"Diskon")})</span><span>-${rp(o.discount)}</span></div>`:""}
 <div class="s-rule"></div>
 <div class="s-row s-total"><span>Total</span><b>${rp(o.total)}</b></div>
 <div class="s-rule"></div>
@@ -208,7 +423,7 @@ if(!o)return toast("Belum ada pesanan untuk dicetak");
 if(!currentOrder())toast("Mencetak pesanan terakhir");printStruk(o)};
 window.addEventListener("afterprint",()=>{$("#struk").innerHTML=""});
 
-tabs();menu();render();
+tabs();menu();render();renderPromoList();
 
 // ===== Fitur tambahan =====
 // Isi ulasan ASLI pelanggan di sini agar bagian "Ulasan" muncul. Contoh: {nama:"Budi",teks:"Enak sekali!",bintang:5}
