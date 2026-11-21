@@ -10,7 +10,7 @@ try{const t=localStorage.getItem("rmn-theme");if(t==="dark"||t==="light")root.da
 const sys=matchMedia("(prefers-color-scheme: dark)");
 const isDark=()=>root.dataset.theme?root.dataset.theme==="dark":sys.matches;
 const btn=document.createElement("button");
-btn.id="themeBtn";btn.className="theme-btn";btn.type="button";
+btn.id="themeBtn";btn.className="icon-btn theme-btn";btn.type="button";
 $("#openCart").before(btn);
 const paint=()=>{
   btn.innerHTML=isDark()?SUN:MOON;

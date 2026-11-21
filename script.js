@@ -329,8 +329,21 @@ if($("#promoList")){
   };
 }
 
-$("#burger").onclick=()=>$("#nav").classList.toggle("open");
-$("#nav").onclick=e=>{if(e.target.tagName==="A")$("#nav").classList.remove("open")};
+const burgerBtn=$("#burger"),navEl=$("#nav");
+burgerBtn.onclick=()=>{
+  const isOpen=navEl.classList.toggle("open");
+  burgerBtn.setAttribute("aria-expanded",isOpen);
+  const u=$("#burgerIc use");
+  if(u)u.setAttribute("href",isOpen?"#i-close":"#i-menu");
+};
+navEl.onclick=e=>{
+  if(e.target.tagName==="A"){
+    navEl.classList.remove("open");
+    burgerBtn.setAttribute("aria-expanded","false");
+    const u=$("#burgerIc use");
+    if(u)u.setAttribute("href","#i-menu");
+  }
+};
 
 $("#rg").innerHTML=Array.from({length:10},(_,i)=>`<option value="${i+1}">${i+1} orang</option>`).join("");
 $("#rt").innerHTML=Array.from({length:12},(_,i)=>{const h=10+i;return `<option>${String(h).padStart(2,"0")}.00</option>`}).join("");
